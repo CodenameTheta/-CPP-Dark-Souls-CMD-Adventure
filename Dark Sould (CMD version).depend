@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1637552834 source:c:\users\paul vazquez\desktop\c++ scripts\dark sould (cmd version)\main.cpp
+	<iostream>
+	<string>
+	<windows.h>
+
