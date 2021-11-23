@@ -22,7 +22,7 @@ int main()
     double warriorESP = 10;
     double warriorPower = 80;
 
-    bool titleScreenMusic = PlaySound(("titleScreen.wav"), NULL, SND_ASYNC);
+    bool titleScreenMusic = PlaySound(("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\titleScreen.wav"), NULL, SND_ASYNC);
     Sleep(1000);
     LOG("\nwelcome chosen hero of the Goddesses! Please tell me your name: \n");
     getline(cin, heroName);
@@ -30,9 +30,9 @@ int main()
     std::cout << "\n" << heroName << "? That name speaks of pure strength...0_0\n" << std::endl;
     Sleep(1000);
 
-    bool firstLoop = false;
-    while (firstLoop != true) {
-        std::cout << "Hero " << heroName << ", are you a knight or a warrior?\n" << std::endl;
+    bool firstLoop = true;
+    std::cout << "Hero " << heroName << ", are you a knight or a warrior?\n" << std::endl;
+    do {
         getline(cin, heroType);
         if (heroType == "knight") {
             Sleep(1000);
@@ -42,7 +42,7 @@ int main()
             heroAttributes[1] = knightESP;
             heroAttributes[2] = knightStamina;
             heroAttributes[3] = knightPower;
-            firstLoop = true;
+            break;
         }
         else if (heroType == "warrior") {
             Sleep(1000);
@@ -52,22 +52,23 @@ int main()
             heroAttributes[1] = warriorPower;
             heroAttributes[2] = warriorStamina;
             heroAttributes[3] = warriorESP;
-            firstLoop = true;
+            break;
+            
         }
         else {
             LOG("\ni didn't understand your response, please type it again..\n");
 
         }
+    } while (heroName != "knight" || "warrior");
 
-        Sleep(1000);
-        cout << "Hero " << heroName << ", I must warn you that your path to victory will be filled with pain, hardship and misery.." << endl;
-        Sleep(1000);
-        cout << "There are a few paths to take, which one will you choose?.." << endl;
-        Sleep(1000);
-        cout << "[1] The blood swamps\n[2] The forest of sacrifices\n[3] road to Death Valley" << endl;
-        Sleep(1000);
-        LOG("what path will you choose?..");
+    Sleep(1000);
+    cout << "Hero " << heroName << ", I must warn you that your path to victory will be filled with pain, hardship and misery.." << endl;
+    Sleep(1000);
+    cout << "There are a few paths to take, which one will you choose?.." << endl;
+    Sleep(1000);
+    cout << "[1] The blood swamps\n[2] The forest of sacrifices\n[3] road to Death Valley" << endl;
+    Sleep(1000);
+    LOG("what path will you choose?..");
 
-        return 0;
-    }
+    return 0;
 }
