@@ -22,7 +22,7 @@ int main()
     double warriorESP = 10;
     double warriorPower = 80;
 
-    bool titleScreenMusic = PlaySound(("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\titleScreen.wav"), NULL, SND_ASYNC);
+    bool titleScreenMusic = PlaySound(("titleScreen.wav"), NULL, SND_ASYNC);
     Sleep(1000);
     LOG("\nwelcome chosen hero of the Goddesses! Please tell me your name: \n");
     getline(cin, heroName);
