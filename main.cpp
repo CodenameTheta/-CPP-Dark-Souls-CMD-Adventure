@@ -4,6 +4,7 @@
 #include "enemies.h"
 #include "soundsandmusic.h"
 #define LOG(x) std::cout << x << std::endl
+#define INPUT(x) getline(cin, x)
 using namespace std;
 
 int main()
@@ -62,13 +63,28 @@ int main()
     } while (heroName != "knight" || "warrior");
 
     Sleep(1000);
-    cout << "Hero " << heroName << ", I must warn you that your path to victory will be filled with pain, hardship and misery.." << endl;
+    cout << "Hero " << heroName << ", I must warn you that your path to victory will be filled with pain, hardship and misery..\n" << endl;
     Sleep(1000);
-    cout << "There are a few paths to take, which one will you choose?.." << endl;
+    cout << "There are a few paths to take, which one will you choose?..\n" << endl;
     Sleep(1000);
     cout << "[1] The blood swamps\n[2] The forest of sacrifices\n[3] road to Death Valley" << endl;
     Sleep(1000);
     LOG("what path will you choose?..");
+    string firstPathChoice;
+    getline(cin, firstPathChoice);
+    if (firstPathChoice == "1" || "the blood swamps" || "The blood swamps") {
+        bool bloodSwampsAmbientSound = PlaySound("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\ambientSound1.wav", NULL, SND_ASYNC);
+        Sleep(2000);
+        LOG("You tread through the rough patches of the blood swamps..\n");
+        Sleep(2000);
+        cout << heroName << " doesn't see anything but senses that something is watching him..\n " << endl;
+        Sleep(2000);
+        LOG("If you keep moving in the direction you are heading, there might be trouble ahead..\n");
+        Sleep(2000);
+        cout << "[hero " << heroName << ", what will you do next?..]\n" << endl;
+        string test;
+        cin >> test;
+    }
 
     return 0;
 }
