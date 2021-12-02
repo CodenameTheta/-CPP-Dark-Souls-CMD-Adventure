@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "enemies.h"
 #include "soundsandmusic.h"
 #define LOG(x) std::cout << x << std::endl
@@ -22,6 +24,7 @@ int main()
     double warriorStamina = 120;
     double warriorESP = 10;
     double warriorPower = 80;
+
 
     bool titleScreenMusic = PlaySound(("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\titleScreen.wav"), NULL, SND_ASYNC);
     Sleep(1000);
@@ -50,9 +53,9 @@ int main()
             heroCreated();
             LOG("your strength alone will have your enemies scatter..");
             heroAttributes[0] = warriorHealth;
-            heroAttributes[1] = warriorPower;
+            heroAttributes[1] = warriorESP;
             heroAttributes[2] = warriorStamina;
-            heroAttributes[3] = warriorESP;
+            heroAttributes[3] = warriorPower;
             break;
             
         }
@@ -71,20 +74,37 @@ int main()
     Sleep(1000);
     LOG("what path will you choose?..");
     string firstPathChoice;
-    getline(cin, firstPathChoice);
-    if (firstPathChoice == "1" || "the blood swamps" || "The blood swamps") {
-        bool bloodSwampsAmbientSound = PlaySound("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\ambientSound1.wav", NULL, SND_ASYNC);
-        Sleep(2000);
-        LOG("You tread through the rough patches of the blood swamps..\n");
-        Sleep(2000);
-        cout << heroName << " doesn't see anything but senses that something is watching him..\n " << endl;
-        Sleep(2000);
-        LOG("If you keep moving in the direction you are heading, there might be trouble ahead..\n");
-        Sleep(2000);
-        cout << "[hero " << heroName << ", what will you do next?..]\n" << endl;
-        string test;
-        cin >> test;
-    }
+    do {
+        getline(cin, firstPathChoice);
+        if (firstPathChoice == "1" || "the blood swamps" || "The blood swamps") {
+            bool bloodSwampsAmbientSound = PlaySound("C:\\Users\\pvazquez\\Documents\\DarkSoulsCMDAdventure\\DarkSoulsCMDAdventure\\ambientSound1.wav", NULL, SND_ASYNC);
+            Sleep(2000);
+            LOG("You tread through the rough patches of the blood swamps..\n");
+            Sleep(2000);
+            cout << heroName << " doesn't see anything but senses that something is watching him..\n " << endl;
+            Sleep(2000);
+            LOG("If you keep moving in the direction you are heading, there might be trouble ahead..\n");
+            Sleep(2000);
+            cout << "[hero " << heroName << ", what will you do next?..]\n" << endl;
+            cout << "[1] wait and check your surroundings\n [2] keep moving forward" << endl;
+            string secondChoice;
+            INPUT(secondChoice);
+            Sleep(2000);
+            do {
+                if (secondChoice == "1" || "wait and check your surroundings") {
+                    LOG("As you check your surroundings, a lvl 2 hallow approaches!");
+                    Sleep(2000);
+                    cout << "Hero " << heroName << ", how will you attack?.." << endl;
+                }
+                else {
+                    LOG("input not recognized, try again");
+                }
+            } while (secondChoice != "1" || "wait and check your surroundings");
+        }
+        else {
+            LOG("input not recognized, try again");
+        }
+    } while (firstPathChoice != "1" || "The blood swamps");
 
     return 0;
 }
